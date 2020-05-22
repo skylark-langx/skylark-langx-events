@@ -5,8 +5,8 @@ define([
   "skylark-langx-klass",
   "./events",
   "./Event",
-  "./Handler"
-],function(types,objects,arrays,klass,events,Event,Handler){
+  "./Listener"
+],function(types,objects,arrays,klass,events,Event,Listener){
     var slice = Array.prototype.slice,
         compact = arrays.compact,
         isDefined = types.isDefined,
@@ -25,7 +25,7 @@ define([
         };
     }
 
-    var Emitter = Handler.inherit({
+    var Emitter = Listener.inherit({
         on: function(events, selector, data, callback, ctx, /*used internally*/ one) {
             var self = this,
                 _hub = this._hub || (this._hub = {});

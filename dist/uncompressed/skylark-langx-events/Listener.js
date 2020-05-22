@@ -17,7 +17,7 @@ define([
         safeMixin = objects.safeMixin;
 
 
-    var Handler = klass({
+    var Listener = klass({
 
         listenTo: function(obj, event, callback, /*used internally*/ one) {
             if (!obj) {
@@ -115,6 +115,6 @@ define([
         }
     });
 
-    return events.Handler = Handler;
+    return events.Listener = Listener;
 
 })

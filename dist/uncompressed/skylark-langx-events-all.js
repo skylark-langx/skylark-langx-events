@@ -1794,7 +1794,7 @@ define('skylark-langx-events/Event',[
     return Event;
     
 });
-define('skylark-langx-events/Handler',[
+define('skylark-langx-events/Listener',[
   "skylark-langx-types",
   "skylark-langx-objects",
   "skylark-langx-arrays",
@@ -1813,7 +1813,7 @@ define('skylark-langx-events/Handler',[
         safeMixin = objects.safeMixin;
 
 
-    var Handler = klass({
+    var Listener = klass({
 
         listenTo: function(obj, event, callback, /*used internally*/ one) {
             if (!obj) {
@@ -1911,7 +1911,7 @@ define('skylark-langx-events/Handler',[
         }
     });
 
-    return events.Handler = Handler;
+    return events.Listener = Listener;
 
 });
 define('skylark-langx-events/Emitter',[
@@ -1921,8 +1921,8 @@ define('skylark-langx-events/Emitter',[
   "skylark-langx-klass",
   "./events",
   "./Event",
-  "./Handler"
-],function(types,objects,arrays,klass,events,Event,Handler){
+  "./Listener"
+],function(types,objects,arrays,klass,events,Event,Listener){
     var slice = Array.prototype.slice,
         compact = arrays.compact,
         isDefined = types.isDefined,
@@ -1941,7 +1941,7 @@ define('skylark-langx-events/Emitter',[
         };
     }
 
-    var Emitter = Handler.inherit({
+    var Emitter = Listener.inherit({
         on: function(events, selector, data, callback, ctx, /*used internally*/ one) {
             var self = this,
                 _hub = this._hub || (this._hub = {});
@@ -2128,7 +2128,7 @@ define('skylark-langx-events/createEvent',[
 define('skylark-langx-events/main',[
 	"./events",
 	"./Event",
-	"./Handler",
+	"./Listener",
 	"./Emitter",
 	"./createEvent"
 ],function(events){
