@@ -1967,6 +1967,12 @@ define('skylark-langx-events/Emitter',[
                 data = null;
             }
 
+            if (!callback ) {
+                throw new Error("No callback function");
+            } else if (!isFunction(callback)) {
+                throw new Error("The callback  is not afunction");
+            }
+
             if (isString(events)) {
                 events = events.split(/\s/)
             }
