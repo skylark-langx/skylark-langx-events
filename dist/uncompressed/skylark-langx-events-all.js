@@ -1867,6 +1867,11 @@ define('skylark-langx-events/Listener',[
             if (!listeningTo) {
                 return this;
             }
+
+            if (isString(callback)) {
+                callback = this[callback];
+            }
+                        
             for (var i = 0; i < listeningTo.length; i++) {
                 var listening = listeningTo[i];
 
