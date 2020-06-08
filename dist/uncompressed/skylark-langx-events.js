@@ -159,6 +159,7 @@ define('skylark-langx-events/Listener',[
         isDefined = types.isDefined,
         isPlainObject = types.isPlainObject,
         isFunction = types.isFunction,
+        isBoolean = types.isBoolean,
         isString = types.isString,
         isEmptyObject = types.isEmptyObject,
         mixin = objects.mixin,
@@ -172,6 +173,24 @@ define('skylark-langx-events/Listener',[
                 return this;
             }
 
+            if (isBoolean(callback)) {
+                one = callback;
+                callback = null;
+            }
+
+            if (types.isPlainObject(event)){
+                //listenTo(obj,callbacks,one)
+                var callbacks = event;
+                for (var name in callbacks) {
+                    this.listeningTo(obj,name,callbacks[name],one);
+                }
+                return this;
+            }
+
+            if (!callback) {
+                callback = "handleEvent";
+            }
+            
             // Bind callbacks on obj,
             if (isString(callback)) {
                 callback = this[callback];
@@ -223,7 +242,7 @@ define('skylark-langx-events/Listener',[
             if (isString(callback)) {
                 callback = this[callback];
             }
-                        
+
             for (var i = 0; i < listeningTo.length; i++) {
                 var listening = listeningTo[i];
 
