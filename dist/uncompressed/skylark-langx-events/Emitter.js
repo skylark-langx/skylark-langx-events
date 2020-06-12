@@ -200,6 +200,6 @@ define([
     });
 
 
-    return　events.Emitter = Emitter;
+    return events.Emitter = Emitter;
 
 })
