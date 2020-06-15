@@ -5,5 +5,5 @@
  * @link www.skylarkjs.org
  * @license MIT
  */
-define(["skylark-langx-objects","skylark-langx-funcs","skylark-langx-klass"],function(t,e,n){var a={preventDefault:"isDefaultPrevented",stopImmediatePropagation:"isImmediatePropagationStopped",stopPropagation:"isPropagationStopped"};function r(n,r){return!r&&n.isDefaultPrevented||(r||(r=n),t.each(a,function(t,a){var s=r[t];n[t]=function(){return this[a]=e.returnTrue,s&&s.apply(r,arguments)},n[a]=e.returnFalse})),n}class s extends CustomEvent{constructor(e,n){super(e,n),t.safeMixin(this,n),r(this)}}return s.compatible=r,s});
+define(["skylark-langx-objects","skylark-langx-funcs","skylark-langx-klass","skylark-langx-hoster"],function(t,e,a){var n={preventDefault:"isDefaultPrevented",stopImmediatePropagation:"isImmediatePropagationStopped",stopPropagation:"isPropagationStopped"};function r(a,r){return!r&&a.isDefaultPrevented||(r||(r=a),t.each(n,function(t,n){var s=r[t];a[t]=function(){return this[n]=e.returnTrue,s&&s.apply(r,arguments)},a[n]=e.returnFalse})),a}class s extends CustomEvent{constructor(e,a){super(e,a),t.safeMixin(this,a),r(this)}}return s.compatible=r,s});
 //# sourceMappingURL=sourcemaps/Event.js.map

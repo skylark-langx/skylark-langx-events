@@ -2,6 +2,7 @@ define([
   "skylark-langx-objects",
   "skylark-langx-funcs",
   "skylark-langx-klass",
+  "skylark-langx-hoster"
 ],function(objects,funcs,klass){
     var eventMethods = {
         preventDefault: "isDefaultPrevented",
