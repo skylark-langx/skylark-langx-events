@@ -183,7 +183,7 @@ define('skylark-langx-events/Listener',[
                 //listenTo(obj,callbacks,one)
                 var callbacks = event;
                 for (var name in callbacks) {
-                    this.listeningTo(obj,name,callbacks[name],one);
+                    this.listenTo(obj,name,callbacks[name],one);
                 }
                 return this;
             }
