@@ -319,6 +319,15 @@ define('skylark-langx-events/Emitter',[
     }
 
     var Emitter = Listener.inherit({
+        _prepareArgs : function(e,args) {
+            if (isDefined(args)) {
+                args = [e].concat(args);
+            } else {
+                args = [e];
+            }
+            return args;
+        },
+
         on: function(events, selector, data, callback, ctx, /*used internally*/ one) {
             var self = this,
                 _hub = this._hub || (this._hub = {});
@@ -392,11 +401,9 @@ define('skylark-langx-events/Emitter',[
             });
 
             var args = slice.call(arguments, 1);
-            if (isDefined(args)) {
-                args = [e].concat(args);
-            } else {
-                args = [e];
-            }
+
+            args = this._prepareArgs(e,args);
+
             [e.type || e.name, "all"].forEach(function(eventName) {
                 var parsed = parse(eventName),
                     name = parsed.name,
