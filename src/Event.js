@@ -2,8 +2,9 @@ define([
   "skylark-langx-objects",
   "skylark-langx-funcs",
   "skylark-langx-klass",
-  "skylark-langx-hoster"
-],function(objects,funcs,klass){
+  "skylark-langx-hoster",
+    "./events"
+],function(objects,funcs,klass,events){
     var eventMethods = {
         preventDefault: "isDefaultPrevented",
         stopImmediatePropagation: "isImmediatePropagationStopped",
@@ -51,6 +52,6 @@ define([
 
     Event.compatible = compatible;
 
-    return Event;
+    return events.Event = Event;
     
 });
