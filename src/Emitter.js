@@ -160,6 +160,10 @@ define([
         },
 
         off: function(events, callback) {
+            if (!events) {
+              this._hub = null;
+              return;
+            }
             var _hub = this._hub || (this._hub = {});
             if (isString(events)) {
                 events = events.split(/\s/)
