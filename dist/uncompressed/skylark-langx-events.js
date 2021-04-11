@@ -253,12 +253,17 @@ define('skylark-langx-events/Listener',[
                 }
 
                 var listeningEvents = listening.events;
+
                 for (var eventName in listeningEvents) {
                     if (event && event != eventName) {
                         continue;
                     }
 
                     var listeningEvent = listeningEvents[eventName];
+
+                    if (!listeningEvent) { 
+                        continue;
+                    }
 
                     for (var j = 0; j < listeningEvent.length; j++) {
                         if (!callback || callback == listeningEvent[i]) {
@@ -454,6 +459,10 @@ define('skylark-langx-events/Emitter',[
         },
 
         off: function(events, callback) {
+            if (!events) {
+              this._hub = null;
+              return;
+            }
             var _hub = this._hub || (this._hub = {});
             if (isString(events)) {
                 events = events.split(/\s/)
