@@ -341,6 +341,10 @@ define('skylark-langx-events/Emitter',[
         };
     }
 
+    
+    var queues  = new Map();
+
+
     var Emitter = Listener.inherit({
         _prepareArgs : function(e,args) {
             if (isDefined(args)) {
@@ -472,6 +476,26 @@ define('skylark-langx-events/Emitter',[
             return this;
         },
 
+        queueEmit : function (event) {
+            const type = event.type || event;
+            let map = queues.get(this);
+            if (!map) {
+                map = new Map();
+                queues.set(this, map);
+            }
+            const oldTimeout = map.get(type);
+            map.delete(type);
+            window.clearTimeout(oldTimeout);
+            const timeout = window.setTimeout(() => {
+                if (map.size === 0) {
+                    map = null;
+                    queues.delete(this);
+                }
+                this.trigger(event);
+            }, 0);
+            map.set(type, timeout);
+        },
+
         listened: function(event) {
             var evtArr = ((this._hub || (this._events = {}))[event] || []);
             return evtArr.length > 0;
@@ -523,9 +547,15 @@ define('skylark-langx-events/Emitter',[
 
             return this;
         },
+
         trigger  : function() {
             return this.emit.apply(this,arguments);
+        },
+
+        queueTrigger : function (event) {
+            return this.queueEmit.apply(this,arguments);
         }
+
     });
 
 
