@@ -176,6 +176,31 @@ define('skylark-langx-events/Listener',[
                 return this;
             }
 
+            if (types.isPlainObject(event)){
+                //listenTo(obj,callbacks,one)
+                if (types.isBoolean(selector)) {
+                    one = selector;
+                    selector = null;
+                } else if (types.isBoolean(callback)) {
+                    one = callback;
+                }
+                var callbacks = event;
+                for (var name in callbacks) {
+
+                    var match = name.match( /^([\w:-]*)\s*(.*)$/ );
+                    var name1 = match[ 1 ];
+                    var selector1 = match[ 2 ] || selector;
+
+                    if (selector1) {
+                        this.listenTo(obj,name1,selector1,callbacks[name],one);
+                    } else {
+                        this.listenTo(obj,name1,callbacks[name],one);
+                    }
+
+                }
+                return this;
+            }
+
             if (isBoolean(callback)) {
                 one = callback;
                 callback = selector;
@@ -189,24 +214,7 @@ define('skylark-langx-events/Listener',[
                 selector = null;
             }
 
-            if (types.isPlainObject(event)){
-                //listenTo(obj,callbacks,one)
-                var callbacks = event;
-                for (var name in callbacks) {
 
-                    var match = name.match( /^([\w:-]*)\s*(.*)$/ );
-                    var name1 = match[ 1 ];
-                    var selector1 = match[ 2 ];
-
-                    if (selector1) {
-                        this.listenTo(obj,name1,selector1,callbacks[name],one);
-                    } else {
-                        this.listenTo(obj,name1,callbacks[name],one);
-                    }
-
-                }
-                return this;
-            }
 
             if (!callback) {
                 callback = "handleEvent";
