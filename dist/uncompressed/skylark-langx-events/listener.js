@@ -75,17 +75,19 @@ define([
                 callback = this[callback];
             }
 
+            var emitter = this.ensureListenedEmitter(obj)
+
             if (one) {
                 if (selector) {
-                    obj.one(event, selector,callback, this);
+                    emitter.one(event, selector,callback, this);
                 } else {
-                    obj.one(event, callback, this);
+                    emitter.one(event, callback, this);
                 }
             } else {
                  if (selector) {
-                    obj.on(event, selector, callback, this);
+                    emitter.on(event, selector, callback, this);
                 } else {
-                    obj.on(event, callback, this);
+                    emitter.on(event, callback, this);
                 }
             }
 
@@ -152,7 +154,8 @@ define([
 
                     for (var j = 0; j < listeningEvent.length; j++) {
                         if (!callback || callback == listeningEvent[i]) {
-                            listening.obj.off(eventName, listeningEvent[i], this);
+                            let emitter = this.ensureListenedEmitter(listening.obj);
+                            emitter.off(eventName, listeningEvent[i], this);
                             listeningEvent[i] = null;
                         }
                     }
@@ -176,6 +179,10 @@ define([
             }
 
             return this;
+        },
+
+        ensureListenedEmitter : function(obj) {
+            return obj;
         }
     });
 
