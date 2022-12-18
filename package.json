@@ -9,7 +9,7 @@
   "homepage": "www.skylarkjs.org",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skylarklangx/skylark-langx-events.git"
+    "url": "https://github.com/skylarklangx/skylark-langx-events.git"
   },
   "keywords": [
     "skylark",
@@ -25,13 +25,13 @@
     "./*": "./dist/uncompressed/skylark-langx-events/*.js"
   },
   "dependencies": {
-    "skylark-langx-arrays": "git+https://github.com/skylark-langx/skylark-langx-arrays.git",
-    "skylark-langx-funcs": "git+https://github.com/skylark-langx/skylark-langx-funcs.git",
-    "skylark-langx-hoster": "git+https://github.com/skylark-langx/skylark-langx-hoster.git",
-    "skylark-langx-klass": "git+https://github.com/skylark-langx/skylark-langx-klass.git",
-    "skylark-langx-ns": "git+https://github.com/skylark-langx/skylark-langx-ns.git",
-    "skylark-langx-objects": "git+https://github.com/skylark-langx/skylark-langx-objects.git",
-    "skylark-langx-types": "git+https://github.com/skylark-langx/skylark-langx-types.git"
+    "skylark-langx-arrays": "https://github.com/skylark-langx/skylark-langx-arrays.git",
+    "skylark-langx-funcs": "https://github.com/skylark-langx/skylark-langx-funcs.git",
+    "skylark-langx-hoster": "https://github.com/skylark-langx/skylark-langx-hoster.git",
+    "skylark-langx-klass": "https://github.com/skylark-langx/skylark-langx-klass.git",
+    "skylark-langx-ns": "https://github.com/skylark-langx/skylark-langx-ns.git",
+    "skylark-langx-objects": "https://github.com/skylark-langx/skylark-langx-objects.git",
+    "skylark-langx-types": "https://github.com/skylark-langx/skylark-langx-types.git"
   },
   "engines": {
     "node": ">=0.8.0"
