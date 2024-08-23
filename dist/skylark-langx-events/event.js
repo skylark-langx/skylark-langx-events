@@ -5,5 +5,5 @@
  * @link www.skylarkjs.org
  * @license MIT
  */
-define(["skylark-langx-objects","skylark-langx-funcs","skylark-langx-klass","skylark-langx-hoster","./events"],function(e,t,n,a){var r={preventDefault:"isDefaultPrevented",stopImmediatePropagation:"isImmediatePropagationStopped",stopPropagation:"isPropagationStopped"};function s(n,a){return!a&&n.isDefaultPrevented||(a||(a=n),e.each(r,function(e,r){var s=a[e];n[e]=function(){return this[r]=t.returnTrue,s&&s.apply(a,arguments)},n[r]=t.returnFalse})),n}class o extends CustomEvent{constructor(t,n){super(t,n),e.safeMixin(this,n),s(this)}}return o.compatible=s,a.Event=o});
+define(["skylark-langx-objects","skylark-langx-funcs","skylark-langx-klass","skylark-langx-hoster","./events"],function(n,s,e,t){var o={preventDefault:"isDefaultPrevented",stopImmediatePropagation:"isImmediatePropagationStopped",stopPropagation:"isPropagationStopped"};function a(a,r){return!r&&a.isDefaultPrevented||(r=r||a,n.each(o,function(e,t){var n=r[e];a[e]=function(){return this[t]=s.returnTrue,n&&n.apply(r,arguments)},a[t]=s.returnFalse})),a}class r extends CustomEvent{constructor(e,t){super(e,t),n.safeMixin(this,t),a(this)}}return r.compatible=a,t.Event=r});
 //# sourceMappingURL=sourcemaps/event.js.map

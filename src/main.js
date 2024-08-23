@@ -3,7 +3,8 @@ define([
 	"./event",
 	"./listener",
 	"./emitter",
-	"./create-event"
+	"./create-event",
+	"./optioned-emitter"
 ],function(events){
 	return events;
 });

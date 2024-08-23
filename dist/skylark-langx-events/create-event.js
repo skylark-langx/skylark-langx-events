@@ -5,5 +5,5 @@
  * @link www.skylarkjs.org
  * @license MIT
  */
-define(["./events","./event"],function(e,n){return e.createEvent=function(e,t){return new n(e,t)}});
+define(["./events","./event"],function(e,t){return e.createEvent=function(e,n){return new t(e,n)}});
 //# sourceMappingURL=sourcemaps/create-event.js.map
